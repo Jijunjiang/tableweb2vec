@@ -1,7 +1,5 @@
 
-import os
-import urllib
-import zipfile
+import string
 import collections
 import tensorflow as tf
 import numpy as np
@@ -55,20 +53,29 @@ def build_dataset(words, n_words):
         data.append(index)
     count[0][1] = unk_count
     reversed_dictionary = dict(zip(dictionary.values(), dictionary.keys()))
-    return data, count, dictionary, reversed_dictionary
+
+    id_to_title_map = {}
+    with open(glob_config.id_title_map_path) as id_title_map:
+        for line in id_title_map:
+            k, v = line.split()
+            id_to_title_map[k] = v
+    return data, count, dictionary, reversed_dictionary, id_to_title_map
 
 
-glob_config.data, glob_config.count, glob_config.dictionary, glob_config.reverse_dictionary = build_dataset(vocabulary, glob_config.vocabulary_size)
+glob_config.data, glob_config.count, glob_config.dictionary, glob_config.reverse_dictionary, glob_config.id_title_map = build_dataset(vocabulary, glob_config.vocabulary_size)
 del vocabulary  # Hint to reduce memory.
 print('size of data: ' + str(len(glob_config.data)))
 print('size of dictionary: ' + str(len(glob_config.dictionary)))
-print(glob_config.dictionary)
 print('size of re-dictionary: ' + str(len(glob_config.reverse_dictionary)))
-print(glob_config.reverse_dictionary)
+print('size of id to map dictionary') + str(len(glob_config.id_title_map))
 print('Most common words (+UNK)', glob_config.count[:5])
 for i in glob_config.data[:10]:
     print('data: ' + str(i) + ' --> word ' +  str(glob_config.reverse_dictionary[i]))
 #print('Sample data', glob_config.data[:10], [glob_config.reverse_dictionary[i] for i in glob_config.data[:10]])
+
+
+
+
 
 data_index = 0
 

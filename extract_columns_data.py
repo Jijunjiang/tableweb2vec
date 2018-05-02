@@ -5,7 +5,7 @@ import tensorflow as tf
 import numpy as np
 import random
 import glob_config
-
+import sys
 '''
 reference : http://adventuresinmachinelearning.com/word2vec-tutorial-tensorflow/
 '''
@@ -22,8 +22,11 @@ def read_data(filename):
     with open(filename) as f:
         data = tf.compat.as_str(f.read()).translate(table, string.punctuation).split()
     return data
+if len(sys.argv) <= 1:
+    vocabulary = read_data(glob_config.training_data_path)
+else:
+    vocabulary = read_data(sys.argv[1])
 
-vocabulary = read_data(glob_config.training_data_path)
 print('data readed ' + str(len(vocabulary))+ ' lines')
 
 

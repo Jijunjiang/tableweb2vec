@@ -127,7 +127,7 @@ with tf.Session(graph=graph) as session:
                 for k in xrange(top_k):
                     close_word = glob_config.reverse_dictionary[nearest[k]]
                     if close_word in glob_config.id_title_map:
-                        close_word = 'Entity ' + close_word
+                        close_word = 'Entity ' + glob_config.id_title_map[close_word]
                     log_str = '%s %s,' % (log_str, close_word)
                 print(log_str)
     final_embeddings = normalized_embeddings.eval()

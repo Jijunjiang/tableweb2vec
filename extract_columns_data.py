@@ -41,7 +41,6 @@ def build_dataset(words, n_words):
     count.extend(collections.Counter(words).most_common(n_words))
     dictionary = {}
     for word, _ in count:
-        if word != 'UNK' and word != '---------':
             dictionary[word] = len(dictionary)
     data = list()
     unk_count = 0

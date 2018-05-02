@@ -120,11 +120,7 @@ with tf.Session(graph=graph) as session:
         if step % 10000 == 0:
             sim = similarity.eval()
             for i in xrange(glob_config.valid_size):
-                try:
-                    valid_word = glob_config.reverse_dictionary[glob_config.valid_examples[i]]
-                except KeyError:
-                    print(glob_config.valid_examples[i])
-                    print('lenth of dic: ' + str(len(glob_config.reverse_dictionary)))
+                valid_word = glob_config.reverse_dictionary[glob_config.valid_examples[i]]
                 top_k = 8
                 nearest = (-sim[i, :]).argsort()[1:top_k + 1]
                 log_str = 'Nearest to %s:' % valid_word

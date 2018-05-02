@@ -8,7 +8,7 @@ import math
 import glob_config
 import os
 import argparse
-import sys
+import glob
 from tensorflow.contrib.tensorboard.plugins import projector
 from tempfile import gettempdir
 

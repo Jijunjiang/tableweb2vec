@@ -21,6 +21,7 @@ def read_data(filename):
     table = string.maketrans('','')
     with open(filename) as f:
         data = tf.compat.as_str(f.read()).translate(table, string.punctuation).split()
+
     return data
 if len(sys.argv) <= 1:
     vocabulary = read_data(glob_config.training_data_path)

@@ -81,7 +81,6 @@ public class GenerateTablePlainText {
 			for (int i=0; i<table.numDataRows; i++) {
 	           	for (int j=0; j<table.numCols; j++) {
 	                WikiCell cell = table.tableData[i][j];
-	                System.out.println(cell.text);
 	                int lengthOfString = cell.text.length();
 	                lengthStringMap.put(lengthOfString, lengthStringMap.getOrDefault(lengthOfString, 0) + 1);
 	                int totalLengthOfSurface = 0;

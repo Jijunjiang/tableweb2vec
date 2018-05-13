@@ -78,8 +78,8 @@ public class GenerateTablePlainText {
 			if (num % 1000 == 0) {
 				System.out.println((double)num / size * 100 + " %");
 			}
-			for (int j=0; j<table.numDataRows; j++) {
-	           	for (int i=0; i<table.numCols; i++) {
+			for (int i=0; i<table.numDataRows; i++) {
+	           	for (int j=0; j<table.numCols; j++) {
 	                WikiCell cell = table.tableData[i][j];
 	                int lengthOfString = cell.text.length();
 	                lengthStringMap.put(lengthOfString, lengthStringMap.getOrDefault(lengthOfString, 0) + 1);

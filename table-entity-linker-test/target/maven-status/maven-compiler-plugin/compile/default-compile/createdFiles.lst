@@ -1,11 +1,11 @@
 edu/northwestern/websail/tabel/model/SketchSummaryManager$SketchType.class
 edu/northwestern/websail/tabel/model/Mention.class
 edu/northwestern/websail/tabel/train/MentionDocDataExtractor.class
-edu/northwestern/websail/tabel/io/OutputFileManager.class
 edu/northwestern/websail/tabel/model/WikiElement.class
 edu/northwestern/websail/tabel/model/WtTable.class
 edu/northwestern/websail/tabel/text/StanfordNLPTokenizer.class
 edu/northwestern/websail/tabel/unitTest/TestSketch.class
+edu/northwestern/websail/tabel/io/OutputFileManager.class
 edu/northwestern/websail/tabel/model/ObjectId.class
 edu/northwestern/websail/tabel/model/WikiPageLocationType.class
 edu/northwestern/websail/tabel/model/WikiLink.class
@@ -39,8 +39,8 @@ edu/northwestern/websail/tabel/model/SketchSummaryManager.class
 edu/northwestern/websail/tabel/model/Candidate.class
 edu/northwestern/websail/tabel/unitTest/MentionExtractionTest.class
 edu/northwestern/websail/tabel/featureExtraction/FeatureName.class
-edu/northwestern/websail/tabel/model/SketchRAFSummaryManager$TIntIntHashMapSerializer.class
 edu/northwestern/websail/tabel/model/TableRAFManager.class
+edu/northwestern/websail/tabel/model/SketchRAFSummaryManager$TIntIntHashMapSerializer.class
 edu/northwestern/websail/tabel/model/SketchRAFSummaryManager$1.class
 edu/northwestern/websail/tabel/train/ModelTrainingDataExtractor.class
 edu/northwestern/websail/tabel/model/LinkType.class
@@ -49,8 +49,8 @@ edu/northwestern/websail/tabel/unitTest/SemanticRelatednessTest.class
 edu/northwestern/websail/tabel/train/MentionExtractor.class
 edu/northwestern/websail/tabel/io/TableDataReader.class
 edu/northwestern/websail/tabel/utils/TrieResultConverter.class
-edu/northwestern/websail/tabel/main/IterativeClassificationAlgorithm.class
 edu/northwestern/websail/tabel/model/SketchRAFSummaryManager$RAFDescriptor.class
+edu/northwestern/websail/tabel/main/IterativeClassificationAlgorithm.class
 edu/northwestern/websail/tabel/model/GoldAnnotation.class
 edu/northwestern/websail/tabel/utils/DataPrinter.class
 edu/northwestern/websail/tabel/model/MentionDocRAFManager.class
@@ -60,5 +60,5 @@ edu/northwestern/websail/tabel/main/EntityLinking.class
 edu/northwestern/websail/tabel/unitTest/GenerateTablePlainText.class
 edu/northwestern/websail/tabel/text/Tokenizer.class
 edu/northwestern/websail/tabel/unitTest/MentionDocTest.class
-edu/northwestern/websail/tabel/io/ResourceLoader.class
 edu/northwestern/websail/tabel/measure/Measure.class
+edu/northwestern/websail/tabel/io/ResourceLoader.class

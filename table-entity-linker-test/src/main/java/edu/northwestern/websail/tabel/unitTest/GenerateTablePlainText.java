@@ -81,6 +81,7 @@ public class GenerateTablePlainText {
 			for (int i=0; i<table.numDataRows; i++) {
 	           	for (int j=0; j<table.numCols; j++) {
 	                WikiCell cell = table.tableData[i][j];
+	                System.out.println(cell.text);
 	                int lengthOfString = cell.text.length();
 	                lengthStringMap.put(lengthOfString, lengthStringMap.getOrDefault(lengthOfString, 0) + 1);
 	                int totalLengthOfSurface = 0;
@@ -92,7 +93,7 @@ public class GenerateTablePlainText {
 	                int lengthWithOutSurface = lengthOfString - totalLengthOfSurface;
 	                lengthWithOutSurfaceMap.put(lengthWithOutSurface, lengthWithOutSurfaceMap.getOrDefault(totalLengthOfSurface, 0) + 1);
 	            }
-	        } 
+	        }
 			num++;
 	    }
 
@@ -100,7 +101,7 @@ public class GenerateTablePlainText {
 	    map.put("lengthSurfaceMap", lengthSurfaceMap);
 	    map.put("lengthWithOutSurfaceMap", lengthWithOutSurfaceMap);
 		try {
-			mapper.writeValue(new File("/websail/jijun/statistic.json"), map);
+			mapper.writeValue(new File("/websial/jijun/statistic.json"), map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

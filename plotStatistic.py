@@ -15,7 +15,7 @@ def plot_img(dict_name):
 
 	Y_dict_string = [y for _, y in sorted(zip(X_dict_string, Y_dict_string))]
 	X_dict_string = sorted(X_dict_string) 
-	plt.bar(X_dict_string, Y_dict_string, color='g')
+	plt.bar(np.log(abs(X_dict_string)), np.log(abs(Y_dict_string)), color='g')
 	plt.title(dict_name)
 	plt.savefig(dict_name + '.png')
 plot_img('lengthStringMap')

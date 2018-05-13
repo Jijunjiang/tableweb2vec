@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import collections
 
-with open('statistic.json') as file:
+with open('/websail/jijun/data/statistic.json') as file:
 	data = json.load(file)
 
 def plot_img(dict_name):

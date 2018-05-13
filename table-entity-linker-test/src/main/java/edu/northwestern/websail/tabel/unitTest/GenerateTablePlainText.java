@@ -66,10 +66,10 @@ public class GenerateTablePlainText {
 
     static private void dataStatistic(ArrayList<WtTable> tables) throws Exception {
     	ObjectMapper mapper = new ObjectMapper();
-    	Map<String, Object> map = new HashMap<>();
-    	Map<Integer, Integer> lengthStringMap = new HashMap<>();
-    	Map<Integer, Integer> lengthSurfaceMap = new HashMap<>();
-    	Map<Integer, Integer> lengthWithOutSurfaceMap = new HashMap<>();
+    	Map<String, Object> map = new HashMap<String, Object>();
+    	Map<Integer, Integer> lengthStringMap = new HashMap<Integer, Integer>();
+    	Map<Integer, Integer> lengthSurfaceMap = new HashMap<Integer, Integer>();
+    	Map<Integer, Integer> lengthWithOutSurfaceMap = new HashMap<Integer, Integer>();
 
 		int size = tables.size();
 		System.out.println("totle table: " + size);

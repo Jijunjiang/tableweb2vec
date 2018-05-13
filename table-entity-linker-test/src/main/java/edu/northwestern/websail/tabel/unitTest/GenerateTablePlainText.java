@@ -101,7 +101,7 @@ public class GenerateTablePlainText {
 	    map.put("lengthSurfaceMap", lengthSurfaceMap);
 	    map.put("lengthWithOutSurfaceMap", lengthWithOutSurfaceMap);
 		try {
-			mapper.writeValue(new File("/websial/jijun/statistic.json"), map);
+			mapper.writeValue(new File("/websail/jijun/statistic.json"), map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -10,9 +10,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class GenerateTablePlainText {
 
     static private String sourcePath = "/websail/common/wikification/data/webTables/tables/tables.json";
+    static private String outPath = "/websail/jijun/data/";
     static ArrayList<WtTable> tables;
     public static void main(String[] args) throws Exception{
-       tables = TableDataReader.loadTable(sourcePath);
+       tables = TableDataReader.loadTable("/Users/apple/PycharmProjects/data/first1000.json");
        //generateRowContext(tables);
        //generateRowContext(tables);
        dataStatistic(tables);
@@ -80,18 +81,23 @@ public class GenerateTablePlainText {
 			}
 			for (int i=0; i<table.numDataRows; i++) {
 	           	for (int j=0; j<table.numCols; j++) {
+	           		boolean ignore = false;
 	                WikiCell cell = table.tableData[i][j];
-	                int lengthOfString = cell.text.length();
+	                int lengthOfString = cell.text.split("\\s+").length;
 	                lengthStringMap.put(lengthOfString, lengthStringMap.getOrDefault(lengthOfString, 0) + 1);
 	                int totalLengthOfSurface = 0;
 	                for (WikiLink link : cell.surfaceLinks) {
-	                	int lengthOfSurface = link.surface.length();
+	                	int lengthOfSurface = link.surface.split("\\s+").length;
 	                	lengthSurfaceMap.put(lengthOfSurface, lengthSurfaceMap.getOrDefault(lengthOfSurface, 0) + 1);
-	                	if (cell.text.indexOf(link.surface) != -1) totalLengthOfSurface += lengthOfSurface;
+	                	if (cell.text.indexOf(link.surface) != -1) {
+	                		ignore = true;
+	                		break;
+						}
+						totalLengthOfSurface += lengthOfSurface;
 	                }
 	                int lengthWithOutSurface = lengthOfString - totalLengthOfSurface;
-	                if (lengthWithOutSurface < 0) continue;
-	                lengthWithOutSurfaceMap.put(lengthWithOutSurface, lengthWithOutSurfaceMap.getOrDefault(totalLengthOfSurface, 0) + 1);
+	                if (lengthWithOutSurface < 0 || ignore) continue;
+	                lengthWithOutSurfaceMap.put(lengthWithOutSurface, lengthWithOutSurfaceMap.getOrDefault(lengthWithOutSurface, 0) + 1);
 	            }
 	        }
 			num++;
@@ -100,8 +106,8 @@ public class GenerateTablePlainText {
 	    map.put("lengthStringMap", lengthStringMap);
 	    map.put("lengthSurfaceMap", lengthSurfaceMap);
 	    map.put("lengthWithOutSurfaceMap", lengthWithOutSurfaceMap);
-		try {
-			mapper.writeValue(new File("/websail/jijun/data/statistic.json"), map);
+		try {///Users/apple/PycharmProjects/data/statistic.json
+			mapper.writeValue(new File(outPath + "statistic.json"), map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -12,7 +12,7 @@ public class GenerateTablePlainText {
     static private String sourcePath = "/websail/common/wikification/data/webTables/tables/tables.json";
     static ArrayList<WtTable> tables;
     public static void main(String[] args) throws Exception{
-       tables = TableDataReader.loadTable("/Users/apple/PycharmProjects/data/first1000.json");
+       tables = TableDataReader.loadTable(sourcePath);
        //generateRowContext(tables);
        //generateRowContext(tables);
        dataStatistic(tables);
@@ -101,7 +101,7 @@ public class GenerateTablePlainText {
 	    map.put("lengthSurfaceMap", lengthSurfaceMap);
 	    map.put("lengthWithOutSurfaceMap", lengthWithOutSurfaceMap);
 		try {
-			mapper.writeValue(new File("/Users/apple/PycharmProjects/data/outStat.json"), map);
+			mapper.writeValue(new File("/websail/jijun/data/statistic.json"), map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

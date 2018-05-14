@@ -96,7 +96,7 @@ public class GenerateTablePlainText {
 						totalLengthOfSurface += lengthOfSurface;
 	                }
 	                int lengthWithOutSurface = lengthOfString - totalLengthOfSurface;
-	                if (lengthWithOutSurface < 0 || ignore) continue;
+	                if (lengthWithOutSurface < 0 || ignore || lengthWithOutSurface == lengthOfString) continue;
 	                lengthWithOutSurfaceMap.put(lengthWithOutSurface, lengthWithOutSurfaceMap.getOrDefault(lengthWithOutSurface, 0) + 1);
 	            }
 	        }

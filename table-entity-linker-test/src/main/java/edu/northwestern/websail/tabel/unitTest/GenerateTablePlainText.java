@@ -87,9 +87,10 @@ public class GenerateTablePlainText {
 	                for (WikiLink link : cell.surfaceLinks) {
 	                	int lengthOfSurface = link.surface.length();
 	                	lengthSurfaceMap.put(lengthOfSurface, lengthSurfaceMap.getOrDefault(lengthOfSurface, 0) + 1);
-	                	totalLengthOfSurface += lengthOfSurface;
+	                	if (cell.text.indexOf(link.surface) != -1) totalLengthOfSurface += lengthOfSurface;
 	                }
 	                int lengthWithOutSurface = lengthOfString - totalLengthOfSurface;
+	                if (lengthWithOutSurface < 0) continue;
 	                lengthWithOutSurfaceMap.put(lengthWithOutSurface, lengthWithOutSurfaceMap.getOrDefault(totalLengthOfSurface, 0) + 1);
 	            }
 	        }
@@ -100,7 +101,7 @@ public class GenerateTablePlainText {
 	    map.put("lengthSurfaceMap", lengthSurfaceMap);
 	    map.put("lengthWithOutSurfaceMap", lengthWithOutSurfaceMap);
 		try {
-			mapper.writeValue(new File("/websail/jijun/statistic.json"), map);
+			mapper.writeValue(new File("/websail/jijun/data/statistic.json"), map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

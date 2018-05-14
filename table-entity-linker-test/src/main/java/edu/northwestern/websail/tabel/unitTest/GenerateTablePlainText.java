@@ -12,7 +12,7 @@ public class GenerateTablePlainText {
     static private String sourcePath = "/websail/common/wikification/data/webTables/tables/tables.json";
     static ArrayList<WtTable> tables;
     public static void main(String[] args) throws Exception{
-       tables = TableDataReader.loadTable(sourcePath);
+       tables = TableDataReader.loadTable("/Users/apple/PycharmProjects/data/first1000.json");
        //generateRowContext(tables);
        //generateRowContext(tables);
        dataStatistic(tables);
@@ -87,9 +87,10 @@ public class GenerateTablePlainText {
 	                for (WikiLink link : cell.surfaceLinks) {
 	                	int lengthOfSurface = link.surface.length();
 	                	lengthSurfaceMap.put(lengthOfSurface, lengthSurfaceMap.getOrDefault(lengthOfSurface, 0) + 1);
-	                	totalLengthOfSurface += lengthOfSurface;
+	                	if (cell.text.indexOf(link.surface) != -1) totalLengthOfSurface += lengthOfSurface;
 	                }
 	                int lengthWithOutSurface = lengthOfString - totalLengthOfSurface;
+	                if (lengthWithOutSurface < 0) continue;
 	                lengthWithOutSurfaceMap.put(lengthWithOutSurface, lengthWithOutSurfaceMap.getOrDefault(totalLengthOfSurface, 0) + 1);
 	            }
 	        }
@@ -100,7 +101,7 @@ public class GenerateTablePlainText {
 	    map.put("lengthSurfaceMap", lengthSurfaceMap);
 	    map.put("lengthWithOutSurfaceMap", lengthWithOutSurfaceMap);
 		try {
-			mapper.writeValue(new File("/websail/jijun/statistic.json"), map);
+			mapper.writeValue(new File("/Users/apple/PycharmProjects/data/outStat.json"), map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

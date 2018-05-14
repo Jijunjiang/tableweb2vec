@@ -18,6 +18,7 @@ def plot_img(dict_name):
 	plt.bar(X_dict_string, np.log(Y_dict_string), color='g')
 	plt.title(dict_name)
 	plt.savefig(dict_name + '.png')
+	plt.ylabel('log(y)')
 plot_img('lengthStringMap')
 plot_img('lengthSurfaceMap')
 plot_img('lengthWithOutSurfaceMap')

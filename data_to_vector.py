@@ -148,11 +148,11 @@ with tf.Session(graph=graph) as session:
 
     dict_cout = {}
     dict_cout['embedding_vector'] = final_embeddings
-    dict_cout['reverse_dictionary'] = glob_config.reverse_dictionary
+    dict_final_embeddings = dict((glob_config.reverse_dictionary[i], final_embeddings[i]) for i in range(glob_config.vocabulary_size))
     dict_cout['dictionary'] = glob_config.dictionary
-    dict_cout['readme'] = 'dictionary is entity ID --> embedding ID ||   re-dict is  embedding ID ---> entity ID   || embedding vector is a list from ID 0 to len'
+
     with open(os.path.join(FLAGS.log_dir, 'embedding_data.json'), 'w') as f:
-        json.dump(dict_cout, f)
+        json.dump(dict_cout., f)
 
 writer.close()
 

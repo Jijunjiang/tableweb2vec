@@ -43,6 +43,7 @@ def build_dataset(words, n_words):
     count = [['UNK', -1]]
     counter = collections.Counter(words)
     n_words = int(len(counter) * 0.95)
+    glob_config.vocabulary_size = n_words
     count.extend(counter.most_common(n_words))
     dictionary = {}
     for word, _ in count:

@@ -41,8 +41,9 @@ any words not within the top 10,000 most common words will be marked with an UNK
 def build_dataset(words, n_words):
     """Process raw inputs into a dataset."""
     count = [['UNK', -1]]
-    #count = []
-    count.extend(collections.Counter(words).most_common(n_words))
+    counter = collections.Counter(words)
+    n_words = int(len(counter) * 0.95)
+    count.extend(counter.most_common(n_words))
     dictionary = {}
     for word, _ in count:
             if word not in dictionary:

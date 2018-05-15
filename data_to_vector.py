@@ -8,7 +8,7 @@ import math
 import glob_config
 import os
 import argparse
-import glob
+import json
 from tensorflow.contrib.tensorboard.plugins import projector
 from tempfile import gettempdir
 
@@ -145,6 +145,14 @@ with tf.Session(graph=graph) as session:
     embedding_conf.tensor_name = embeddings.name
     embedding_conf.metadata_path = os.path.join(FLAGS.log_dir, 'metadata.tsv')
     projector.visualize_embeddings(writer, config)
+
+    dict_cout = {}
+    dict_cout['embedding_vector'] = final_embeddings
+    dict_cout['reverse_dictionary'] = glob_config.reverse_dictionary
+    dict_cout['dictionary'] = glob_config.dictionary
+    dict_cout['readme'] = 'dictionary is entity ID --> embedding ID ||   re-dict is  embedding ID ---> entity ID   || embedding vector is a list from ID 0 to len'
+    with open(os.path.join(FLAGS.log_dir, 'embedding_data.json')) as f:
+        json.dump(dict_cout, f)
 
 writer.close()
 

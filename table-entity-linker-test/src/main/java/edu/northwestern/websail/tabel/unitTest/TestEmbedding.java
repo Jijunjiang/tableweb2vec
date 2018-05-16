@@ -11,7 +11,6 @@ import java.util.HashMap;
 
 public class TestEmbedding {
 
-    static double[][] embeddingVectors;
     static public void main(String[] args) {
         Embeddings embObj = new Embeddings();
         HashMap<String, double[]> map = embObj.loadEmbedding();

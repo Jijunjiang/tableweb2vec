@@ -2,10 +2,11 @@ package edu.northwestern.websail.tabel.unitTest;
 
 import edu.northwestern.websail.tabel.io.TableDataReader;
 import edu.northwestern.websail.tabel.model.*;
+import org.codehaus.jackson.map.ObjectMapper;
+
 import java.io.*;
 import java.util.*;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 public class GenerateTablePlainText {
 

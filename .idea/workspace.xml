@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c0ea9b0-ebb3-4c0c-a64d-94fc39d7b945" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/table-entity-linker-test/src/main/java/edu/northwestern/websail/tabel/unitTest/GenerateTablePlainText.java" beforeDir="false" afterPath="$PROJECT_DIR$/table-entity-linker-test/src/main/java/edu/northwestern/websail/tabel/unitTest/GenerateTablePlainText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/table-entity-linker-test/src/main/java/edu/northwestern/websail/tabel/Embeddings/Embeddings.java" beforeDir="false" afterPath="$PROJECT_DIR$/table-entity-linker-test/src/main/java/edu/northwestern/websail/tabel/Embeddings/Embeddings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/table-entity-linker-test/src/main/java/edu/northwestern/websail/tabel/unitTest/TestEmbedding.java" beforeDir="false" afterPath="$PROJECT_DIR$/table-entity-linker-test/src/main/java/edu/northwestern/websail/tabel/unitTest/TestEmbedding.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -74,8 +74,8 @@
       <file leaf-file-name="data_to_vector.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data_to_vector.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="151" column="132" selection-start-line="151" selection-start-column="126" selection-end-line="151" selection-end-column="132" />
+            <state relative-caret-position="1070">
+              <caret line="153" column="14" lean-forward="true" selection-start-line="153" selection-start-column="14" selection-end-line="153" selection-end-column="14" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -672,8 +672,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_to_vector.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="151" column="132" selection-start-line="151" selection-start-column="126" selection-end-line="151" selection-end-column="132" />
+        <state relative-caret-position="1070">
+          <caret line="153" column="14" lean-forward="true" selection-start-line="153" selection-start-column="14" selection-end-line="153" selection-end-column="14" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>

@@ -50,6 +50,7 @@ def build_dataset(words, n_words):
     for word, _ in count:
             if word not in dictionary and bool(re.match("^[A-Za-z0-9]*$", word)):
                 dictionary[word] = len(dictionary)
+    glob_config.vocabulary_size = len(dictionary)
     data = list()
     unk_count = 0
     for word in words:

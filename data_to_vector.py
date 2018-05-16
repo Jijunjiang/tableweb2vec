@@ -126,8 +126,8 @@ with tf.Session(graph=graph) as session:
                 log_str = 'Nearest to %s:' % valid_word
                 for k in xrange(top_k):
                     close_word = glob_config.reverse_dictionary[nearest[k]]
-                    if close_word in glob_config.id_title_map:
-                        close_word = 'Entity ' + glob_config.id_title_map[close_word]
+                    if close_word[0] == 'e' and close_word[1:].isdigit() and (int(close_word[1:]) in glob_config.id_title_map):
+                        close_word = 'Entity ' + glob_config.id_title_map[close_word[1:]]
                     log_str = '%s %s,' % (log_str, close_word)
                 print(log_str)
     final_embeddings = normalized_embeddings.eval()
@@ -147,12 +147,14 @@ with tf.Session(graph=graph) as session:
     projector.visualize_embeddings(writer, config)
 
     dict_cout = {}
-    dict_cout['embedding_vector'] = final_embeddings
-    dict_final_embeddings = dict((glob_config.reverse_dictionary[i], final_embeddings[i]) for i in range(glob_config.vocabulary_size))
-    dict_cout['dictionary'] = glob_config.dictionary
-
+    size = len(final_embeddings)
+    dimension = len(final_embeddings[0])
+    dict_final_embeddings = dict((glob_config.reverse_dictionary[i], final_embeddings[i].tolist()) for i in range(glob_config.vocabulary_size))
+    dict_cout['size'] = size
+    dict_cout['dimension'] = dimension
+    dict_cout['vectors'] = dict_final_embeddings
     with open(os.path.join(FLAGS.log_dir, 'embedding_data.json'), 'w') as f:
-        json.dump(dict_cout., f)
+        json.dump(dict_cout, f)
 
 writer.close()
 

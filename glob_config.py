@@ -1,12 +1,12 @@
 import numpy as np
 
 
-training_data_path = '/websail/jijun/data/out_row_without_unk.txt'
+training_data_path = '/websail/jijun/data/marked_row.txt'
 out_log_path = '/websail/jijun/out'
 id_title_map_path = '/websail/jijun/data/en_id_title.map'
 
 
-vocabulary_size = 1000000
+vocabulary_size = 100
 
 data = []
 count = []

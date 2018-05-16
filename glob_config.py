@@ -6,7 +6,7 @@ out_log_path = '/websail/jijun/out'
 id_title_map_path = '/websail/jijun/data/en_id_title.map'
 
 
-vocabulary_size = 100
+vocabulary_size = 1000000
 
 data = []
 count = []
@@ -15,10 +15,10 @@ dictionary = {}
 reverse_dictionary = {}
 batch_size = 128
 embedding_size = 300  # Dimension of the embedding vector.
-skip_window = 4  # How many words to consider left and right.
-num_skips = 8  # How many times to reuse an input to generate a label.
+skip_window = 5  # How many words to consider left and right.
+num_skips = 10  # How many times to reuse an input to generate a label.
 num_sampled = 64  # Number of negative examples to sample.
-num_steps = 1000
+num_steps = 10000000
 
 
 # displaying model accuracy, they don't affect calculation.

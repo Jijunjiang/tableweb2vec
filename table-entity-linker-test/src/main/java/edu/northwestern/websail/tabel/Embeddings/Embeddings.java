@@ -11,7 +11,7 @@ public class Embeddings {
     HashMap<String, double[]> embeddingVectorsMap;
     public HashMap<String, double[]> loadEmbedding() {
         try {
-            String filePath = "/Users/apple/PycharmProjects/tableweb2vec/table-entity-linker-test/src/main/resources/embeddingTest.json";
+            String filePath = "/websail/jijun/data/embedding_data.json";
             embeddingMapper vectorsMap = new ObjectMapper().readValue(new File(filePath), embeddingMapper.class);
             embeddingVectorsMap = vectorsMap.vectors;
             System.out.println("loading embedding done!!");

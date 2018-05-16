@@ -13,10 +13,11 @@ public class GenerateTablePlainText {
     static private String outPath = "/websail/jijun/data/";
     static ArrayList<WtTable> tables;
     public static void main(String[] args) throws Exception{
-       tables = TableDataReader.loadTable(sourcePath);
+       //tables = TableDataReader.loadTable(sourcePath);
        //generateRowContext(tables);
-       generateColContext(tables);
+       //generateColContext(tables);
        //dataStatistic(tables);
+    	Integer.parseInt("");
     }
 
     static private void generateRowContext(ArrayList<WtTable> tables) throws Exception {

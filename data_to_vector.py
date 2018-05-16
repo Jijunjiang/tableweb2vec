@@ -126,7 +126,7 @@ with tf.Session(graph=graph) as session:
                 log_str = 'Nearest to %s:' % valid_word
                 for k in xrange(top_k):
                     close_word = glob_config.reverse_dictionary[nearest[k]]
-                    if close_word[0] == 'e' and close_word[1:].isdigit() and (int(close_word[1:]) in glob_config.id_title_map):
+                    if close_word[0] == 'e' and close_word[1:].isdigit() and (int(close_word[1:]) in glob_config.id_title_map.keys()):
                         close_word = 'Entity ' + glob_config.id_title_map[close_word[1:]]
                     log_str = '%s %s,' % (log_str, close_word)
                 print(log_str)

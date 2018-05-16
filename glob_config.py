@@ -1,7 +1,7 @@
 import numpy as np
 
 
-training_data_path = '/websail/jijun/data/first1000marked_row.txt'
+training_data_path = '/websail/jijun/data/marked_row.txt'
 out_log_path = '/websail/jijun/out'
 id_title_map_path = '/websail/jijun/data/en_id_title.map'
 
@@ -15,8 +15,8 @@ dictionary = {}
 reverse_dictionary = {}
 batch_size = 128
 embedding_size = 300  # Dimension of the embedding vector.
-skip_window = 5  # How many words to consider left and right.
-num_skips = 10  # How many times to reuse an input to generate a label.
+skip_window = 4  # How many words to consider left and right.
+num_skips = 8  # How many times to reuse an input to generate a label.
 num_sampled = 64  # Number of negative examples to sample.
 num_steps = 10000000
 

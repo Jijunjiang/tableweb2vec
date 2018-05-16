@@ -14,12 +14,62 @@ public class GenerateTablePlainText {
     static private String outPath = "/websail/jijun/data/";
     static ArrayList<WtTable> tables;
     public static void main(String[] args) throws Exception{
-       //tables = TableDataReader.loadTable(sourcePath);
+       tables = TableDataReader.loadTable(sourcePath);
+		generateRowEntities(tables);
+		generateColEntities(tables);
        //generateRowContext(tables);
        //generateColContext(tables);
        //dataStatistic(tables);
-    	Integer.parseInt("");
     }
+	static private void generateRowEntities(ArrayList<WtTable> tables) throws Exception {
+		BufferedWriter out = new BufferedWriter(new FileWriter("/websail/jijun/Entity_row.txt"));
+		int size = tables.size();
+		System.out.println("totle table: " + size);
+		int num = 1;
+		for (WtTable table : tables) {
+			if (num % 10000 == 0) {
+				System.out.println((double)num / size * 100 + " %");
+			}
+			for (int i=0; i<table.numDataRows; i++) {
+				for (int j=0; j<table.numCols; j++) {
+					WikiCell cell = table.tableData[i][j];
+					StringBuilder entities = new StringBuilder();
+					for (WikiLink link : cell.surfaceLinks) {
+						entities.append(link.target.id == -1 ? "" : Integer.toString(link.target.id)).append(" ");
+					}
+					out.write(entities.toString());
+				}
+				out.write("\n");
+			}
+			num++;
+		}
+		out.flush();
+	}
+
+	static private void generateColEntities(ArrayList<WtTable> tables) throws Exception {
+		BufferedWriter out = new BufferedWriter(new FileWriter("/websail/jijun/Entity_col.txt"));
+		int size = tables.size();
+		System.out.println("totle table: " + size);
+		int num = 1;
+		for (WtTable table : tables) {
+			if (num % 10000 == 0) {
+				System.out.println((double)num / size * 100 + " %");
+			}
+			for (int j=0; j<table.numCols; j++) {
+				for (int i=0; i<table.numDataRows; i++) {
+					WikiCell cell = table.tableData[i][j];
+					StringBuilder entities = new StringBuilder();
+					for (WikiLink link : cell.surfaceLinks) {
+						entities.append(link.target.id == -1 ? "" : Integer.toString(link.target.id)).append(" ");
+					}
+					out.write(entities.toString());
+				}
+				out.write("\n");
+			}
+			num++;
+		}
+		out.flush();
+	}
 
     static private void generateRowContext(ArrayList<WtTable> tables) throws Exception {
         BufferedWriter out = new BufferedWriter(new FileWriter("/websail/jijun/marked_row.txt"));

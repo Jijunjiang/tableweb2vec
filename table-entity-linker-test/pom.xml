@@ -13,7 +13,7 @@
                     <archive>
                         <manifest>
                             <mainClass>
-                                edu.northwestern.websail.tabel.unitTest.edu.northwestern.websail.table.test.TestTokenizer
+                                edu.northwestern.websail.tabel.unitTest.edu.northwestern.websail.table.test.TestEmbedding
                             </mainClass>
                         </manifest>
                     </archive>

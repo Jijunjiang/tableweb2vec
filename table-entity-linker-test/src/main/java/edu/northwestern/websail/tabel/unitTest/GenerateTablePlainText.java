@@ -14,8 +14,8 @@ public class GenerateTablePlainText {
     static ArrayList<WtTable> tables;
     public static void main(String[] args) throws Exception{
        tables = TableDataReader.loadTable(sourcePath);
-       generateRowContext(tables);
-       generateRowContext(tables);
+       //generateRowContext(tables);
+       generateColContext(tables);
        //dataStatistic(tables);
     }
 

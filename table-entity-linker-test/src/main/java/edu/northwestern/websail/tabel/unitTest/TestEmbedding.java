@@ -15,13 +15,13 @@ public class TestEmbedding {
     static public void main(String[] args) {
         Embeddings embObj = new Embeddings();
         HashMap<String, double[]> map = embObj.loadEmbedding();
-        double[] d1 = map.get("0");
-        double[] d2 = map.get("1");
+        double[] d1 = map.get("d");
+        double[] d2 = map.get("e");
         double res = 0.0;
         for (int i = 0; i < d1.length; i++) {
             res += d1[i] * d2[i];
         }
-        double res2 = embObj.calculateSimilarity(0, 1);
+        double res2 = embObj.calculateSimilarity("d", "e");
         System.out.println(res == res2);
     }
 }

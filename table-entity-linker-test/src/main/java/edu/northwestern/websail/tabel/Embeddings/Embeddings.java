@@ -11,7 +11,7 @@ public class Embeddings {
     HashMap<String, double[]> embeddingVectorsMap;
     public HashMap<String, double[]> loadEmbedding() {
         try {
-            String filePath = "/websail/jijun/data/embedding_data.json";
+            String filePath = "/Users/apple/Desktop/embedding_data.json";//"/websail/jijun/data/embedding_data.json";
             embeddingMapper vectorsMap = new ObjectMapper().readValue(new File(filePath), embeddingMapper.class);
             embeddingVectorsMap = vectorsMap.vectors;
             System.out.println("loading embedding done!!");
@@ -22,9 +22,9 @@ public class Embeddings {
         return embeddingVectorsMap;
     }
 
-    public double calculateSimilarity(int id1, int id2) {
-        Matrix matrix1 = new Matrix(new double[][]{embeddingVectorsMap.get(Integer.toString(id1))});
-        Matrix matrix2 = new Matrix(new double[][]{embeddingVectorsMap.get(Integer.toString(id2))});
+    public double calculateSimilarity(String id1, String id2) {
+        Matrix matrix1 = new Matrix(new double[][]{embeddingVectorsMap.get(id1)});
+        Matrix matrix2 = new Matrix(new double[][]{embeddingVectorsMap.get(id2)});
         // since the voctor already normalized
         return matrix1.times(matrix2.transpose()).get(0,0);
     }

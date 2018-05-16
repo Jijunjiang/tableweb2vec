@@ -6,6 +6,7 @@ import numpy as np
 import random
 import glob_config
 import sys
+import re
 '''
 reference : http://adventuresinmachinelearning.com/word2vec-tutorial-tensorflow/
 '''
@@ -47,7 +48,7 @@ def build_dataset(words, n_words):
     count.extend(counter.most_common(n_words))
     dictionary = {}
     for word, _ in count:
-            if word not in dictionary:
+            if word not in dictionary and bool(re.match("^[A-Za-z0-9]*$", word)):
                 dictionary[word] = len(dictionary)
     data = list()
     unk_count = 0

@@ -14,13 +14,13 @@ public class GenerateTablePlainText {
     static ArrayList<WtTable> tables;
     public static void main(String[] args) throws Exception{
        tables = TableDataReader.loadTable(sourcePath);
-       //generateRowContext(tables);
-       //generateRowContext(tables);
-       dataStatistic(tables);
+       generateRowContext(tables);
+       generateRowContext(tables);
+       //dataStatistic(tables);
     }
 
     static private void generateRowContext(ArrayList<WtTable> tables) throws Exception {
-        BufferedWriter out = new BufferedWriter(new FileWriter("/websail/jijun/out_row_without_unk.txt"));
+        BufferedWriter out = new BufferedWriter(new FileWriter("/websail/jijun/marked_row.txt"));
 		int size = tables.size();
 		System.out.println("totle table: " + size);
 		int num = 1;
@@ -32,7 +32,9 @@ public class GenerateTablePlainText {
 	           	for (int j=0; j<table.numCols; j++) {
 	                WikiCell cell = table.tableData[i][j];
 	               	StringBuilder entities = new StringBuilder();
-	                for (WikiLink link : cell.surfaceLinks) entities.append(link.target.id == -1 ? "" : link.target.id).append(" ");
+	                for (WikiLink link : cell.surfaceLinks) {
+						entities.append(link.target.id == -1 ? "" : "e:" + Integer.toString(link.target.id)).append(" ");
+					}
 	                out.write(cell.text + " " + entities.toString().replaceAll("[-+.^:,]",""));
 	            }
 				out.write("\n");
@@ -43,7 +45,7 @@ public class GenerateTablePlainText {
     }
 
     static private void generateColContext(ArrayList<WtTable> tables) throws Exception {
-        BufferedWriter out = new BufferedWriter(new FileWriter("/websail/jijun/out_col_without_unk.txt"));
+        BufferedWriter out = new BufferedWriter(new FileWriter("/websail/jijun/marked_col.txt"));
 		int size = tables.size();
 		System.out.println("totle table: " + size);
 		int num = 1;
@@ -55,7 +57,9 @@ public class GenerateTablePlainText {
 	           	for (int i=0; i<table.numDataRows; i++) {
 	                WikiCell cell = table.tableData[i][j];
 	               	StringBuilder entities = new StringBuilder();
-	                for (WikiLink link : cell.surfaceLinks) entities.append(link.target.id == -1 ? "" : link.target.id).append(" ");
+					for (WikiLink link : cell.surfaceLinks) {
+						entities.append(link.target.id == -1 ? "" : "e:" + Integer.toString(link.target.id)).append(" ");
+					}
 	                out.write(cell.text + " " + entities.toString().replaceAll("[-+.^:,]",""));
 	            }
 				out.write("\n");

@@ -13,11 +13,7 @@
                     <archive>
                         <manifest>
                             <mainClass>
-<<<<<<< HEAD
-                                edu.northwestern.websail.tabel.unitTest.edu.TestEmbedding
-=======
                                 edu.northwestern.websail.tabel.unitTest.edu.northwestern.websail.table.test.TestTokenizer
->>>>>>> d06bae7fd293de9741127d200ce7ee54a79e7e00
                             </mainClass>
                         </manifest>
                     </archive>

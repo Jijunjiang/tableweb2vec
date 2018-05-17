@@ -68,9 +68,10 @@ public class GenerateTablePlainText {
 					}
 					if (entities.length() != 0) {
 						out.write(entities.toString());
-						out.write("\n");
 					}
 				}
+
+				out.write("\n");
 			}
 			num++;
 		}

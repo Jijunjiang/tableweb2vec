@@ -4,6 +4,7 @@ import edu.northwestern.websail.datastructure.trie.impl.w2cSQL.W2CSQLTrie;
 import edu.northwestern.websail.datastructure.trie.impl.w2cSQL.W2CSQLTrieMaximalMatch;
 import edu.northwestern.websail.datastructure.trie.impl.w2cSQL.candidateComparators.W2CSQLCandidateExternalProbComparator;
 import edu.northwestern.websail.datastructure.trie.impl.w2cSQL.candidateComparators.W2CSQLTrieComparatorImpl;
+import edu.northwestern.websail.tabel.Embeddings.Embeddings;
 import edu.northwestern.websail.tabel.config.GlobalConfig;
 import edu.northwestern.websail.tabel.featureExtraction.ExistingLinkFeatures;
 import edu.northwestern.websail.tabel.featureExtraction.MentionEntitySimilarityFeatures;
@@ -37,10 +38,17 @@ public class ModelTrainingDataExtractor {
     public static SketchSummaryManager skMgr;
     public static SemanticRelatedness sr;
 
+    //Embedding
+    public static Embeddings embeddings;
+
     public ModelTrainingDataExtractor() throws Exception {
         this.trie = ResourceLoader.loadTrie();
         this.tokenizer = new StanfordNLPTokenizer();
         this.idToTitleMap = ResourceLoader.loadIdToTitleMap();
+
+        //Embedding
+        this.embeddings = new Embeddings();
+        embeddings.loadEmbedding();
 
         // TODO: fix sketch data
         /*
@@ -263,6 +271,18 @@ public class ModelTrainingDataExtractor {
 
         // label
         features.put("label", candidate.label);
+
+        // embedding features
+        // embedding features are features of the average
+        // 1. similarity of column embeddings between the current cell and the column context
+        // 2. similarity of row embeddings between the current cell and the row context
+        // 3. we find the first from left column that is not number and all the cell contains entities, if no such column
+        // exist we set it as a constant 0
+        features.put("rowEmbeddingSimilarity", embeddings.AverageRowSimilarity(mention, candidate, table));
+        features.put("colEmbeddingSimilarity", embeddings.AverageColSimilarity(mention, candidate, table));
+        features.put("subjectColumnRelation", embeddings.vectorFeatureOfSubjectColumn(mention,candidate, table));
+
+
 
         return features;
     }

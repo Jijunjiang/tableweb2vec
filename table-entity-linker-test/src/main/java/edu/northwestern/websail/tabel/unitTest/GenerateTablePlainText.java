@@ -37,9 +37,13 @@ public class GenerateTablePlainText {
 					for (WikiLink link : cell.surfaceLinks) {
 						entities.append(link.target.id == -1 ? "" : Integer.toString(link.target.id)).append(" ");
 					}
-					out.write(entities.toString());
+					if (entities.length() != 0) {
+						out.write(entities.toString());
+						out.write("\n");
+					}
+
 				}
-				out.write("\n");
+
 			}
 			num++;
 		}
@@ -62,9 +66,11 @@ public class GenerateTablePlainText {
 					for (WikiLink link : cell.surfaceLinks) {
 						entities.append(link.target.id == -1 ? "" : Integer.toString(link.target.id)).append(" ");
 					}
-					out.write(entities.toString());
+					if (entities.length() != 0) {
+						out.write(entities.toString());
+						out.write("\n");
+					}
 				}
-				out.write("\n");
 			}
 			num++;
 		}

@@ -1,6 +1,5 @@
 import numpy as np
 
-
 training_data_path = '/websail/jijun/data/Entity_col.txt'
 out_log_path = '/websail/jijun/out'
 id_title_map_path = '/websail/jijun/data/en_id_title.map'

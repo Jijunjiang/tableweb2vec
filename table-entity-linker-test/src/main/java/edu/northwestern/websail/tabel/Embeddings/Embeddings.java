@@ -62,6 +62,7 @@ public class Embeddings {
                     if (link.target.id != -1) {
                         String key = Integer.toString(link.target.id);
                         double[] v = embeddingVectorsMap_c.get(key);
+                        if (v == null) continue;
                         rowSimilarity += calculateSimilarity_c(candidateID, key);
                         numOfEntities++;
                     }
@@ -84,6 +85,7 @@ public class Embeddings {
                     if (link.target.id != -1) {
                         String key = Integer.toString(link.target.id);
                         double[] v = embeddingVectorsMap_c.get(key);
+                        if (v == null) continue;
                         colSimilarity += calculateSimilarity_c(candidateID, key);
                         numOfEntities++;
                     }

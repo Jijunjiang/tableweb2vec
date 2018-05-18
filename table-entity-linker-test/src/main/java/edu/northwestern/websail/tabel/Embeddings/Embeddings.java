@@ -139,7 +139,7 @@ public class Embeddings {
         double similarity = 0;
         int count = 0;
         for (int i = 0; i < table.numDataRows; i++) {
-            if (i != mention.cellRow) {
+            if (i != row) {
                 if (table.tableData[i][subjectColumn].surfaceLinks.size() == 0 ||
                         table.tableData[i][col].surfaceLinks.size() == 0) continue;
                 String keyID1 = Integer.toString(table.tableData[i][subjectColumn].surfaceLinks.get(0).target.id);

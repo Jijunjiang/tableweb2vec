@@ -67,5 +67,8 @@ public class FeatureExtractionTest {
         assertEquals("mentionColIdx", 2.0, f.get("mentionColIdx"), eps);
         assertEquals("surfaceAndCandidateTitleInContext", 0.0, f.get("surfaceAndCandidateTitleInContext"), eps);
         assertEquals("fullLinksAvgSr", 0.7803534859583198, f.get("fullLinksAvgSr"), eps);
+        System.out.println(f.get("rowEmbeddingSimilarity"));
+        System.out.println(f.get("colEmbeddingSimilarity"));
+        System.out.println(f.get("subjectColumnRelation"));
     }
 }

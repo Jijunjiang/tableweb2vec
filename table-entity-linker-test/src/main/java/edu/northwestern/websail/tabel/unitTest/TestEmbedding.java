@@ -1,5 +1,6 @@
 package edu.northwestern.websail.tabel.unitTest;
 
+import Jama.Matrix;
 import edu.northwestern.websail.tabel.Embeddings.Embeddings;
 
 import java.util.HashMap;
@@ -30,6 +31,8 @@ public class TestEmbedding {
             res += d1[i] * d2[i];
         }
         double res2 = embObj.calculateSimilarity_c(k1, k2);
-        System.out.println(res == res2);
+        Matrix m1 = new Matrix(new double[][]{d1});
+        Matrix m2 = new Matrix(new double[][]{d2});
+        System.out.println(res == res2 &&  res == embObj.cosineSimilarity(m1, m2)? "test1 pass" : "test1 fail");
     }
 }

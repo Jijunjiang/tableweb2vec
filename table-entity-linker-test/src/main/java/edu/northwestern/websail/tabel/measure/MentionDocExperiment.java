@@ -57,8 +57,8 @@ public class MentionDocExperiment {
     public static void main(String[] args) throws Exception {
 //        String trainingData = "/Users/ruohongzhang/Desktop/websail/table-entity-linker/training.txt";
 //        String testingData = "/Users/ruohongzhang/Desktop/websail/table-entity-linker/testing.txt";
-        String trainingData = GlobalConfig.trainingDataDir;
-        String testingData = GlobalConfig.testingDataDir;
+        String trainingData = "/websail/jijun/data/trainingData.txt";
+        String testingData = "/websail/jijun/data/testingData.txt";
         MentionDocExperiment exp = new MentionDocExperiment(trainingData, testingData);
         exp.runExperiment();
 

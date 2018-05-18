@@ -148,7 +148,7 @@ public class Embeddings {
                 String keyID2 = Integer.toString(table.tableData[i][col].surfaceLinks.get(0).target.id);
                 double[] ID2_m = embeddingVectorsMap_r.get(keyID2);
                 if (ID2_m == null) continue;
-                Matrix m_canRow = new Matrix(new double[][]{ID1_m});
+                Matrix m_canRow = new Matrix(new double[][]{ID2_m});
 
                 Matrix m_reference = m_sub.minus(m_canRow);
                 similarity += cosineSimilarity(candidateVector, m_reference);

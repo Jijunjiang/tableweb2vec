@@ -44,7 +44,7 @@ public class Embeddings {
 
     public double cosineSimilarity(Matrix m1, Matrix m2) {
         return (m1.times(m2).get(0, 0)) /
-                (Math.sqrt(m1.times(m1).get(0, 0)) *  Math.sqrt(m1.times(m1).get(0, 0)));
+                (Math.sqrt(m1.times(m1.transpose()).get(0, 0)) *  Math.sqrt(m2.times(m2.transpose()).get(0, 0)));
     }
 
     public double AverageRowSimilarity(Mention mention, Candidate candidate, WtTable table) {

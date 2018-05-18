@@ -97,12 +97,13 @@ public class Embeddings {
         return colSimilarity / numOfEntities;
     }
 
-    private int getSubjectColumn(WtTable table, int curColumn) {
+    private int getSubjectColumn(WtTable table, int curColumn, int curRow) {
         int maxIndex = -1;
         int maxValue = 0;
         for (int j = 0; j < table.numCols; j++) {
             int count = 0;
             if (j == curColumn) continue;
+            if (table.tableData[curRow][j].surfaceLinks.size() == 0) continue;
             for (int i = 0; i < table.numDataRows; i++) {
                 WikiCell cell = table.tableData[i][j];
                 for (WikiLink link : cell.surfaceLinks) {
@@ -126,7 +127,7 @@ public class Embeddings {
     public double vectorFeatureOfSubjectColumn(Mention mention, Candidate candidate, WtTable table) {
         int col = mention.cellCol;
         int row = mention.cellRow;
-        int subjectColumn = getSubjectColumn(table, mention.cellCol);
+        int subjectColumn = getSubjectColumn(table, col, row);
         if (subjectColumn == -1) return 0;
         // calculate similarity between cur_row(sub-column - candi-column) and other_row(sub-column - candi-column)
 

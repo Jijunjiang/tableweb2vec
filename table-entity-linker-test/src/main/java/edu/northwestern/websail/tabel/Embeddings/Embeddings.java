@@ -15,7 +15,7 @@ public class Embeddings {
     public HashMap<String, double[]> embeddingVectorsMap_r;
     public void loadEmbedding() {
         try {
-            String filePath = "/websail/jijun/data/embeddings";
+            String filePath = "/websail/jijun/data/embeddings/";
             System.out.println("loading embedding...");
             embeddingMapper vectorsMap_c = new ObjectMapper().readValue(new File(filePath + "embedding_c.json"), embeddingMapper.class);
             embeddingMapper vectorsMap_r = new ObjectMapper().readValue(new File(filePath + "embedding_r.json"), embeddingMapper.class);

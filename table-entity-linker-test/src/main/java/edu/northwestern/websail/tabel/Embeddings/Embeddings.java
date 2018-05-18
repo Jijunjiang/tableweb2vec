@@ -53,6 +53,7 @@ public class Embeddings {
         double rowSimilarity = 0.0;
         int numOfEntities = 0;
         String candidateID= Integer.toString(candidate.wikiTitle.id);
+        if (!embeddingVectorsMap_r.containsKey(candidateID)) return 0;
         // col feature
 
         for (int j = 0; j < table.numCols; j++) {
@@ -61,9 +62,9 @@ public class Embeddings {
                 for (WikiLink link : cell.surfaceLinks) {
                     if (link.target.id != -1) {
                         String key = Integer.toString(link.target.id);
-                        double[] v = embeddingVectorsMap_c.get(key);
+                        double[] v = embeddingVectorsMap_r.get(key);
                         if (v == null) continue;
-                        rowSimilarity += calculateSimilarity_c(candidateID, key);
+                        rowSimilarity += calculateSimilarity_r(candidateID, key);
                         numOfEntities++;
                     }
                 }
@@ -78,6 +79,7 @@ public class Embeddings {
         double colSimilarity = 0.0;
         int numOfEntities = 0;
         String candidateID= Integer.toString(candidate.wikiTitle.id);
+        if (!embeddingVectorsMap_c.containsKey(candidateID)) return 0;
         for (int i = 0; i < table.numDataRows; i++) {
             if (i != row) {
                 WikiCell cell = table.tableData[i][col];

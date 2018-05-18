@@ -49,9 +49,9 @@ public class MentionDocExperiment {
         System.out.println("f1: " + Measure.f1(res, act));
         System.out.println("f1 negative: " + Measure.f1Negative(res, act));
 
-        for (int i=0; i<res.length; i++) {
-            System.out.println("pred " + res[i] + "\t" + "act " + act[i]);
-        }
+//        for (int i=0; i<res.length; i++) {
+//            System.out.println("pred " + res[i] + "\t" + "act " + act[i]);
+//        }
     }
 
     public static void main(String[] args) throws Exception {

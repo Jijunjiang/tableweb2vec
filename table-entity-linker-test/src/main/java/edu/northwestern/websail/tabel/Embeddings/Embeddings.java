@@ -140,6 +140,8 @@ public class Embeddings {
         int count = 0;
         for (int i = 0; i < table.numDataRows; i++) {
             if (i != mention.cellRow) {
+                if (table.tableData[i][subjectColumn].surfaceLinks.size() == 0 ||
+                        table.tableData[i][col].surfaceLinks.size() == 0) continue;
                 String keyID1 = Integer.toString(table.tableData[i][subjectColumn].surfaceLinks.get(0).target.id);
                 double[] ID1_m = embeddingVectorsMap_r.get(keyID1);
                 if (ID1_m == null) continue;

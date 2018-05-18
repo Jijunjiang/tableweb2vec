@@ -33,6 +33,8 @@ public class TestEmbedding {
         double res2 = embObj.calculateSimilarity_c(k1, k2);
         Matrix m1 = new Matrix(new double[][]{d1});
         Matrix m2 = new Matrix(new double[][]{d2});
-        System.out.println(res == res2 &&  res == embObj.cosineSimilarity(m1, m2)? "test1 pass" : "test1 fail");
+        double res3 = embObj.cosineSimilarity(m1, m2);
+        System.out.println(res == res2 &&  res == res3 ? "test1 pass" : "test1 fail");
+
     }
 }

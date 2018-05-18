@@ -59,7 +59,7 @@ public class GlobalConfig {
     // testing Mention
     public static String testMentionRootDirectory = "/websail/common/wikification/data/webTables/tabel_35k";
     public static String testingMentionDir = testMentionRootDirectory + "/35k_test.ids.txt";
-    public static String trainingMentionDir = testMentionRootDirectory + "/model.ids.txt";
+    public static String trainingMentionDir = testMentionRootDirectory + "/train.ids.txt";
 
     // table and mention doc
     public static String testTablesRootDirectory = "/websail/common/wikification/data/webTables/tables";

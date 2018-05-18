@@ -28,7 +28,7 @@ public class MentionDocExperiment {
             HashMap<String, Double> f = new HashMap<String, Double>();
             for (int i=0; i<pairs.length; i++) {
                 String[] p = pairs[i].split(" ");
-                f.put(p[0], Double.parseDouble(p[1]));
+                f.put(p[0], Double.parseDouble(p[1].equals("NaN") ? "0.0" : p[1]));
             }
             data.add(f);
         }

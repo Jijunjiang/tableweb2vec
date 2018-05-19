@@ -5,21 +5,20 @@ import edu.northwestern.websail.tabel.io.InputFileManager;
 import edu.northwestern.websail.tabel.train.ModelTraining;
 import edu.northwestern.websail.tabel.utils.DataPrinter;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class MentionDocExperiment {
     public ModelTraining model;
     public ArrayList<HashMap<String, Double>> trainingData;
     public ArrayList<HashMap<String, Double>> testingData;
 
-    public MentionDocExperiment(String trainingPath, String testingPath) {
+    public MentionDocExperiment(String trainingPath, String testingPath, Set<String> features) {
         model = new ModelTraining();
-        trainingData = loadModelData(trainingPath);
-        testingData = loadModelData(testingPath);
+        trainingData = loadModelData(trainingPath, features);
+        testingData = loadModelData(testingPath, features);
     }
 
-    public ArrayList<HashMap<String, Double>> loadModelData(String path) {
+    public ArrayList<HashMap<String, Double>> loadModelData(String path, Set<String> features) {
         ArrayList<HashMap<String, Double>> data = new ArrayList<HashMap<String, Double>>();
         InputFileManager in = new InputFileManager(path);
         String line;
@@ -28,7 +27,7 @@ public class MentionDocExperiment {
             HashMap<String, Double> f = new HashMap<String, Double>();
             for (int i=0; i<pairs.length; i++) {
                 String[] p = pairs[i].split(" ");
-                f.put(p[0], Double.parseDouble(p[1].equals("NaN") ? "0.0" : p[1]));
+                if (features.contains(p[0])) f.put(p[0], Double.parseDouble(p[1].equals("NaN") ? "0.0" : p[1]));
             }
             data.add(f);
         }
@@ -57,9 +56,46 @@ public class MentionDocExperiment {
     public static void main(String[] args) throws Exception {
 //        String trainingData = "/Users/ruohongzhang/Desktop/websail/table-entity-linker/training.txt";
 //        String testingData = "/Users/ruohongzhang/Desktop/websail/table-entity-linker/testing.txt";
+        String[] array = new String[] {"label",
+                "isMentionExact",
+                "surfaceTitleMatch",
+                "mentionColIdx",
+                "surfaceAndCandidateTitleInContext",
+                "isCandidatelinkedDiffSurface",
+                "candidateTitleColumnTitleOverlap",
+                "candidateTitleIsInColTitles",
+                "candidatePageSr",
+                "rowLinksAvgSr",
+                "colLinksAvgSr",
+                "fullLinksAvgSr",
+                "rowEmbeddingSimilarity",
+                "colEmbeddingSimilarity",
+                "subjectColumnRelation"};
+
+        List<String> basicGroup = Arrays.asList(array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7]);
+        List<String> srGroup = Arrays.asList(array[8], array[9], array[10], array[11]);
+        List<String> embedGroup = Arrays.asList(array[12], array[13], array[14]);
+
         String trainingData = "/websail/jijun/data/trainingData.txt";
         String testingData = "/websail/jijun/data/testingData.txt";
-        MentionDocExperiment exp = new MentionDocExperiment(trainingData, testingData);
+
+
+        System.out.println("basic with  basic");
+        Set<String> features = new HashSet<String>();
+        features.addAll(basicGroup);
+        MentionDocExperiment exp = new MentionDocExperiment(trainingData, testingData, features);
+        exp.runExperiment();
+
+        System.out.println("basic with SR");
+        features.addAll(srGroup);
+        exp = new MentionDocExperiment(trainingData, testingData, features);
+        exp.runExperiment();
+
+
+        System.out.println("basic with embedding");
+        features.removeAll(srGroup);
+        features.addAll(embedGroup);
+        exp = new MentionDocExperiment(trainingData, testingData, features);
         exp.runExperiment();
 
         /*

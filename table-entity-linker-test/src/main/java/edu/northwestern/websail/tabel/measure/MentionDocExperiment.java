@@ -14,8 +14,8 @@ public class MentionDocExperiment {
 
     public MentionDocExperiment(String trainingPath, String testingPath, Set<String> features) {
         model = new ModelTraining();
-        trainingData = loadModelData(trainingPath, features);
-        testingData = loadModelData(testingPath, features);
+        if (trainingData == null) trainingData = loadModelData(trainingPath, features);
+        if (testingData == null) testingData = loadModelData(testingPath, features);
     }
 
     public ArrayList<HashMap<String, Double>> loadModelData(String path, Set<String> features) {
@@ -97,6 +97,12 @@ public class MentionDocExperiment {
         features.addAll(embedGroup);
         exp = new MentionDocExperiment(trainingData, testingData, features);
         exp.runExperiment();
+
+        System.out.println("all in");
+        features.addAll(srGroup);
+        exp = new MentionDocExperiment(trainingData, testingData, features);
+        exp.runExperiment();
+
 
         /*
         System.out.println(n);

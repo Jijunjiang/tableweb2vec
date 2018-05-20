@@ -17,8 +17,8 @@ public class MentionDocExperiment {
 
     public void loadData(String trainingPath, String testingPath, Set<String> features) {
         model = new ModelTraining();
-        if (trainingData == null) trainingData = loadModelData(trainingPath, features);
-        if (testingData == null) testingData = loadModelData(testingPath, features);
+        trainingData = loadModelData(trainingPath, features);
+        testingData = loadModelData(testingPath, features);
     }
 
 

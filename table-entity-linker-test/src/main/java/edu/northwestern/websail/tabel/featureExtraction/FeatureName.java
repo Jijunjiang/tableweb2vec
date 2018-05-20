@@ -21,6 +21,11 @@ public enum FeatureName {
     rowLinksAvgSr("rowLinksAvgSr"),
     colLinksAvgSr("colLinksAvgSr"),
     fullLinksAvgSr("fullLinksAvgSr"),
+    rowEmbeddingSimilarity("rowEmbeddingSimilarity"),
+    colEmbeddingSimilarity("colEmbeddingSimilarity"),
+    subjectColumnRelation("subjectColumnRelation"),
+
+
     label("label");
 
     private String name;

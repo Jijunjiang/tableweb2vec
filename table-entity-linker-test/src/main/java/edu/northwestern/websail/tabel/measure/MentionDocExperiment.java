@@ -12,11 +12,16 @@ public class MentionDocExperiment {
     public ArrayList<HashMap<String, Double>> trainingData;
     public ArrayList<HashMap<String, Double>> testingData;
 
-    public MentionDocExperiment(String trainingPath, String testingPath, Set<String> features) {
+    public MentionDocExperiment() {
+    }
+
+    public void loadData(String trainingPath, String testingPath, Set<String> features) {
         model = new ModelTraining();
         if (trainingData == null) trainingData = loadModelData(trainingPath, features);
         if (testingData == null) testingData = loadModelData(testingPath, features);
     }
+
+
 
     public ArrayList<HashMap<String, Double>> loadModelData(String path, Set<String> features) {
         ArrayList<HashMap<String, Double>> data = new ArrayList<HashMap<String, Double>>();
@@ -83,26 +88,44 @@ public class MentionDocExperiment {
         System.out.println("basic with  basic");
         Set<String> features = new HashSet<String>();
         features.addAll(basicGroup);
-        MentionDocExperiment exp = new MentionDocExperiment(trainingData, testingData, features);
+        MentionDocExperiment exp = new MentionDocExperiment();
+        exp.loadData(trainingData, testingData, features);
+//        exp.runExperiment();
+//
+//        System.out.println("basic with SR");
+//        features.addAll(srGroup);
+//        exp = new MentionDocExperiment(trainingData, testingData, features);
+//        exp.runExperiment();
+//
+//
+//        System.out.println("basic with embedding");
+//        features.removeAll(srGroup);
+//        features.addAll(embedGroup);
+//        exp = new MentionDocExperiment(trainingData, testingData, features);
+//        exp.runExperiment();
+//
+//        System.out.println("all in");
+//        features.addAll(srGroup);
+//        exp = new MentionDocExperiment(trainingData, testingData, features);
+//        exp.runExperiment();
+        //features.addAll(srGroup);
+        System.out.println("add relational");
+        features.add(array[14]);
+        exp.loadData(trainingData, testingData, features);
         exp.runExperiment();
 
-        System.out.println("basic with SR");
-        features.addAll(srGroup);
-        exp = new MentionDocExperiment(trainingData, testingData, features);
+        System.out.println("add col");
+        features.remove(array[14]);
+        features.add(array[13]);
+        exp.loadData(trainingData, testingData, features);
         exp.runExperiment();
 
 
-        System.out.println("basic with embedding");
-        features.removeAll(srGroup);
-        features.addAll(embedGroup);
-        exp = new MentionDocExperiment(trainingData, testingData, features);
+        System.out.println("add row");
+        features.remove(array[13]);
+        features.add(array[12]);
+        exp.loadData(trainingData, testingData, features);
         exp.runExperiment();
-
-        System.out.println("all in");
-        features.addAll(srGroup);
-        exp = new MentionDocExperiment(trainingData, testingData, features);
-        exp.runExperiment();
-
 
         /*
         System.out.println(n);

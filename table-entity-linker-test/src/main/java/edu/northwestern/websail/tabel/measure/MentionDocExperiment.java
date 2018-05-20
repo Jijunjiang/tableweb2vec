@@ -90,42 +90,44 @@ public class MentionDocExperiment {
         features.addAll(basicGroup);
         MentionDocExperiment exp = new MentionDocExperiment();
         exp.loadData(trainingData, testingData, features);
-//        exp.runExperiment();
-//
-//        System.out.println("basic with SR");
-//        features.addAll(srGroup);
-//        exp = new MentionDocExperiment(trainingData, testingData, features);
-//        exp.runExperiment();
-//
-//
-//        System.out.println("basic with embedding");
-//        features.removeAll(srGroup);
-//        features.addAll(embedGroup);
-//        exp = new MentionDocExperiment(trainingData, testingData, features);
-//        exp.runExperiment();
-//
-//        System.out.println("all in");
-//        features.addAll(srGroup);
-//        exp = new MentionDocExperiment(trainingData, testingData, features);
-//        exp.runExperiment();
-        //features.addAll(srGroup);
-        System.out.println("add relational");
+        exp.runExperiment();
+
+        System.out.println("basic with SR");
+        features.addAll(srGroup);
+        exp.loadData(trainingData, testingData, features);
+        exp.runExperiment();
+
+
+        System.out.println("basic with embedding");
+        features.removeAll(srGroup);
+        features.add(array[13]);
         features.add(array[14]);
         exp.loadData(trainingData, testingData, features);
         exp.runExperiment();
 
-        System.out.println("add col");
-        features.remove(array[14]);
-        features.add(array[13]);
+        System.out.println("all in");
+        features.addAll(srGroup);
         exp.loadData(trainingData, testingData, features);
         exp.runExperiment();
+        features.addAll(srGroup);
 
-
-        System.out.println("add row");
-        features.remove(array[13]);
-        features.add(array[12]);
-        exp.loadData(trainingData, testingData, features);
-        exp.runExperiment();
+//        System.out.println("add relational");
+//        features.add(array[14]);
+//        exp.loadData(trainingData, testingData, features);
+//        exp.runExperiment();
+//
+//        System.out.println("add col");
+//        features.remove(array[14]);
+//        features.add(array[13]);
+//        exp.loadData(trainingData, testingData, features);
+//        exp.runExperiment();
+//
+//
+//        System.out.println("add row");
+//        features.remove(array[13]);
+//        features.add(array[12]);
+//        exp.loadData(trainingData, testingData, features);
+//        exp.runExperiment();
 
         /*
         System.out.println(n);

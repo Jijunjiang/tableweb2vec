@@ -59,6 +59,8 @@ public class ModelTraining {
         Instance example = new DenseInstance(this.featureTypes.size());
         for (int i = 0; i < this.featureTypes.size()-1; i++) {
             Attribute att_i = this.featureTypes.get(i);
+            System.out.println(att_i.name());
+            System.out.println(feature.keySet().toString());
             example.setValue(att_i, feature.get(att_i.name()));
         }
 

@@ -81,8 +81,8 @@ public class MentionDocExperiment {
         List<String> srGroup = Arrays.asList(array[8], array[9], array[10], array[11]);
         List<String> embedGroup = Arrays.asList(array[12], array[13], array[14]);
 
-        String trainingData = "/websail/jijun/data/trainingData.txt";
-        String testingData = "/websail/jijun/data/testingData.txt";
+        String trainingData = "/websail/jijun/data/trainingData600.txt";
+        String testingData = "/websail/jijun/data/testingData600.txt";
 
 
         System.out.println("basic with  basic");

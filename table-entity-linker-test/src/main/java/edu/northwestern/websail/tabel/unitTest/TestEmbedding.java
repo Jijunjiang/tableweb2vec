@@ -46,17 +46,20 @@ public class TestEmbedding {
 
 
         ArrayList<WtTable> tb = TableDataReader.loadTableFromResource("/test.json");
-        WtTable t1 = tb.get(0);
-        ArrayList<Mention> mentions = extractMention(t1);
-        //W2CSQLTrie trie = ResourceLoader.loadTrie();
-        Mention mention = mentions.get(0);
-        Candidate candidate = mention.candidates.get(0);
-        for (Candidate c : mention.candidates) {
-            System.out.println("candidate:" + "  " + c.toString());
-            System.out.println("col similarity:" + "    " + Double.toString(embObj.AverageColSimilarity(mention, c, t1)));
-            System.out.println("row similarity:" + "    " + Double.toString(embObj.AverageRowSimilarity(mention, c, t1)));
-            System.out.println("vector similarity:" + "    " + Double.toString(embObj.vectorFeatureOfSubjectColumn(mention, c, t1)));
+        for (WtTable t1 : tb) {
+            ArrayList<Mention> mentions = extractMention(t1);
+            //W2CSQLTrie trie = ResourceLoader.loadTrie();
+            for (Mention mention : mentions) {
+                System.out.println("entity:" + "   " + mention.entity.toString());
+                for (Candidate c : mention.candidates) {
+                    System.out.println("candidate:" + "  " + c.toString());
+                    System.out.println("col similarity:" + "    " + Double.toString(embObj.AverageColSimilarity(mention, c, t1)));
+                    System.out.println("row similarity:" + "    " + Double.toString(embObj.AverageRowSimilarity(mention, c, t1)));
+                    System.out.println("vector similarity:" + "    " + Double.toString(embObj.vectorFeatureOfSubjectColumn(mention, c, t1)));
+                }
+            }
         }
+
 
     }
 

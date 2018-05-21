@@ -85,50 +85,50 @@ public class MentionDocExperiment {
         String testingData = "/websail/jijun/data/testingData600.txt";
 
 
-        System.out.println("basic with  basic");
-        Set<String> features = new HashSet<String>();
-        features.addAll(basicGroup);
-        MentionDocExperiment exp = new MentionDocExperiment();
-        exp.loadData(trainingData, testingData, features);
-        exp.runExperiment();
-
-        System.out.println("basic with SR");
-        features.addAll(srGroup);
-        exp.loadData(trainingData, testingData, features);
-        exp.runExperiment();
-
-
-        System.out.println("basic with embedding");
-        features.removeAll(srGroup);
-        features.addAll(embedGroup);
-        exp.loadData(trainingData, testingData, features);
-        exp.runExperiment();
-
-        System.out.println("all in");
-        features.addAll(srGroup);
-        exp.loadData(trainingData, testingData, features);
-        exp.runExperiment();
-        features.addAll(srGroup);
-
-
-        features.removeAll(embedGroup);
-        System.out.println("add relational");
-        features.add(array[14]);
-        exp.loadData(trainingData, testingData, features);
-        exp.runExperiment();
-
-        System.out.println("add col");
-        features.remove(array[14]);
-        features.add(array[13]);
-        exp.loadData(trainingData, testingData, features);
-        exp.runExperiment();
-
-
-        System.out.println("add row");
-        features.remove(array[13]);
-        features.add(array[12]);
-        exp.loadData(trainingData, testingData, features);
-        exp.runExperiment();
+//        System.out.println("basic with  basic");
+//        Set<String> features = new HashSet<String>();
+//        features.addAll(basicGroup);
+//        MentionDocExperiment exp = new MentionDocExperiment();
+//        exp.loadData(trainingData, testingData, features);
+//        exp.runExperiment();
+//
+//        System.out.println("basic with SR");
+//        features.addAll(srGroup);
+//        exp.loadData(trainingData, testingData, features);
+//        exp.runExperiment();
+//
+//
+//        System.out.println("basic with embedding");
+//        features.removeAll(srGroup);
+//        features.addAll(embedGroup);
+//        exp.loadData(trainingData, testingData, features);
+//        exp.runExperiment();
+//
+//        System.out.println("all in");
+//        features.addAll(srGroup);
+//        exp.loadData(trainingData, testingData, features);
+//        exp.runExperiment();
+//        features.addAll(srGroup);
+//
+//
+//        features.removeAll(embedGroup);
+//        System.out.println("add relational");
+//        features.add(array[14]);
+//        exp.loadData(trainingData, testingData, features);
+//        exp.runExperiment();
+//
+//        System.out.println("add col");
+//        features.remove(array[14]);
+//        features.add(array[13]);
+//        exp.loadData(trainingData, testingData, features);
+//        exp.runExperiment();
+//
+//
+//        System.out.println("add row");
+//        features.remove(array[13]);
+//        features.add(array[12]);
+//        exp.loadData(trainingData, testingData, features);
+//        exp.runExperiment();
 
         /*
         System.out.println(n);
@@ -136,5 +136,12 @@ public class MentionDocExperiment {
         DataPrinter p = new DataPrinter("/Users/ruohongzhang/Desktop/websail/table-entity-linker/out.txt");
         p.printMap(f);
         */
+
+        System.out.println("basic with  basic");
+        Set<String> features = new HashSet<String>();
+        features.addAll(embedGroup);
+        MentionDocExperiment exp = new MentionDocExperiment();
+        exp.loadData(trainingData, testingData, features);
+        exp.runExperiment();
     }
 }

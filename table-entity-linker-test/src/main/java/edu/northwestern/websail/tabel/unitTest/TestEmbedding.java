@@ -50,7 +50,8 @@ public class TestEmbedding {
             ArrayList<Mention> mentions = extractMention(t1);
             //W2CSQLTrie trie = ResourceLoader.loadTrie();
             for (Mention mention : mentions) {
-                System.out.println("entity:" + "   " + mention.entity.toString());
+                if (mention == null || mention.entity == null) continue;
+                System.out.println("entity:" + "   " + mention.entity.wikiTitle.title);
                 for (Candidate c : mention.candidates) {
                     System.out.println("candidate:" + "  " + c.toString());
                     System.out.println("col similarity:" + "    " + Double.toString(embObj.AverageColSimilarity(mention, c, t1)));

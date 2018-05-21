@@ -100,8 +100,7 @@ public class MentionDocExperiment {
 
         System.out.println("basic with embedding");
         features.removeAll(srGroup);
-        features.add(array[13]);
-        features.add(array[14]);
+        features.addAll(embedGroup);
         exp.loadData(trainingData, testingData, features);
         exp.runExperiment();
 
@@ -111,23 +110,25 @@ public class MentionDocExperiment {
         exp.runExperiment();
         features.addAll(srGroup);
 
-//        System.out.println("add relational");
-//        features.add(array[14]);
-//        exp.loadData(trainingData, testingData, features);
-//        exp.runExperiment();
-//
-//        System.out.println("add col");
-//        features.remove(array[14]);
-//        features.add(array[13]);
-//        exp.loadData(trainingData, testingData, features);
-//        exp.runExperiment();
-//
-//
-//        System.out.println("add row");
-//        features.remove(array[13]);
-//        features.add(array[12]);
-//        exp.loadData(trainingData, testingData, features);
-//        exp.runExperiment();
+
+        features.removeAll(embedGroup);
+        System.out.println("add relational");
+        features.add(array[14]);
+        exp.loadData(trainingData, testingData, features);
+        exp.runExperiment();
+
+        System.out.println("add col");
+        features.remove(array[14]);
+        features.add(array[13]);
+        exp.loadData(trainingData, testingData, features);
+        exp.runExperiment();
+
+
+        System.out.println("add row");
+        features.remove(array[13]);
+        features.add(array[12]);
+        exp.loadData(trainingData, testingData, features);
+        exp.runExperiment();
 
         /*
         System.out.println(n);

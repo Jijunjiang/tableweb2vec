@@ -139,6 +139,7 @@ public class MentionDocExperiment {
 
         System.out.println("basic with  basic");
         Set<String> features = new HashSet<String>();
+        features.add("label");
         features.addAll(embedGroup);
         MentionDocExperiment exp = new MentionDocExperiment();
         exp.loadData(trainingData, testingData, features);

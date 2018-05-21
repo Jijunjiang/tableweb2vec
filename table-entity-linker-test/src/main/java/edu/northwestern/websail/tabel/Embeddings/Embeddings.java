@@ -32,14 +32,14 @@ public class Embeddings {
         Matrix matrix1 = new Matrix(new double[][]{embeddingVectorsMap_c.get(id1)});
         Matrix matrix2 = new Matrix(new double[][]{embeddingVectorsMap_c.get(id2)});
         // since the voctor already normalized
-        return matrix1.times(matrix2.transpose()).get(0,0);
+        return cosineSimilarity(matrix1, matrix2);
     }
 
     public double calculateSimilarity_r(String id1, String id2) {
         Matrix matrix1 = new Matrix(new double[][]{embeddingVectorsMap_r.get(id1)});
         Matrix matrix2 = new Matrix(new double[][]{embeddingVectorsMap_r.get(id2)});
         // since the voctor already normalized
-        return matrix1.times(matrix2.transpose()).get(0,0);
+        return cosineSimilarity(matrix1, matrix2);
     }
 
     public double cosineSimilarity(Matrix m1, Matrix m2) {

@@ -52,7 +52,7 @@ public class Embeddings {
         int row = mention.cellRow;
         double rowSimilarity = 0.0;
         int numOfEntities = 0;
-        String candidateID= Integer.toString(candidate.wikiTitle.id);
+        String candidateID= "e" + Integer.toString(candidate.wikiTitle.id);
         if (!embeddingVectorsMap_r.containsKey(candidateID)) return 0;
         // col feature
 
@@ -78,7 +78,7 @@ public class Embeddings {
         int row = mention.cellRow;
         double colSimilarity = 0.0;
         int numOfEntities = 0;
-        String candidateID= Integer.toString(candidate.wikiTitle.id);
+        String candidateID= "e" + Integer.toString(candidate.wikiTitle.id);
         if (!embeddingVectorsMap_c.containsKey(candidateID)) return 0;
         for (int i = 0; i < table.numDataRows; i++) {
             if (i != row) {
@@ -135,7 +135,7 @@ public class Embeddings {
         if (candiVector == null) return 0;
         Matrix v1 = new Matrix( new double[][]{candiVector});
 
-        String key = Integer.toString(table.tableData[row][subjectColumn].surfaceLinks.get(0).target.id);
+        String key = "e" + Integer.toString(table.tableData[row][subjectColumn].surfaceLinks.get(0).target.id);
         double[] candi_sub_vector = embeddingVectorsMap_r.get(key);
         if (candi_sub_vector == null) return 0;
         Matrix v2 = new Matrix( new double[][] {candi_sub_vector});
@@ -147,12 +147,12 @@ public class Embeddings {
             if (i != row) {
                 if (table.tableData[i][subjectColumn].surfaceLinks.size() == 0 ||
                         table.tableData[i][col].surfaceLinks.size() == 0) continue;
-                String keyID1 = Integer.toString(table.tableData[i][subjectColumn].surfaceLinks.get(0).target.id);
+                String keyID1 = "e" + Integer.toString(table.tableData[i][subjectColumn].surfaceLinks.get(0).target.id);
                 double[] ID1_m = embeddingVectorsMap_r.get(keyID1);
                 if (ID1_m == null) continue;
                 Matrix m_sub = new Matrix(new double[][]{ID1_m});
 
-                String keyID2 = Integer.toString(table.tableData[i][col].surfaceLinks.get(0).target.id);
+                String keyID2 = "e" + Integer.toString(table.tableData[i][col].surfaceLinks.get(0).target.id);
                 double[] ID2_m = embeddingVectorsMap_r.get(keyID2);
                 if (ID2_m == null) continue;
                 Matrix m_canRow = new Matrix(new double[][]{ID2_m});

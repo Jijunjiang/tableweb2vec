@@ -17,8 +17,8 @@ public class Embeddings {
         try {
             String filePath = "/websail/jijun/test/word2vec/data/";
             System.out.println("loading embedding...");
-            embeddingMapper vectorsMap_c = new ObjectMapper().readValue(new File(filePath + "embedding_c.json"), embeddingMapper.class);
-            embeddingMapper vectorsMap_r = new ObjectMapper().readValue(new File(filePath + "embedding_r.json"), embeddingMapper.class);
+            embeddingMapper vectorsMap_c = new ObjectMapper().readValue(new File(filePath + "embedding_c_surface.json"), embeddingMapper.class);
+            embeddingMapper vectorsMap_r = new ObjectMapper().readValue(new File(filePath + "embedding_r_surface.json"), embeddingMapper.class);
             embeddingVectorsMap_c = vectorsMap_c.vectors;
             embeddingVectorsMap_r = vectorsMap_r.vectors;
             System.out.println("loading embedding done!!");

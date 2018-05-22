@@ -76,15 +76,15 @@ public class MentionDocDataExtractor {
 
     public static void main(String[] args) throws Exception {
         MentionDocDataExtractor extractor = new MentionDocDataExtractor();
-//        ArrayList<HashMap<String, Double>> features = extractor.getAllDataFromFile(GlobalConfig.trainingMentionDir);
-//        //DataPrinter p = new DataPrinter(GlobalConfig.trainingDataDir);
-//        DataPrinter p = new DataPrinter("/websail/jijun/data/trainingData600.txt");
-//        p.printFeatures(features);
-//        p.close();
+        ArrayList<HashMap<String, Double>> features = extractor.getAllDataFromFile(GlobalConfig.trainingMentionDir);
+        //DataPrinter p = new DataPrinter(GlobalConfig.trainingDataDir);
+        DataPrinter p = new DataPrinter("/websail/jijun/data/trainingData900.txt");
+        p.printFeatures(features);
+        p.close();
 
         ArrayList<HashMap<String, Double>> testingFeatures = extractor.getAllDataFromFile(GlobalConfig.testingMentionDir);
-        DataPrinter p = new DataPrinter(GlobalConfig.testingDataDir);
-        p = new DataPrinter("/websail/jijun/data/testingData600.txt");
+        //p = new DataPrinter(GlobalConfig.testingDataDir);
+        p = new DataPrinter("/websail/jijun/data/testingData900.txt");
         p.printFeatures(testingFeatures);
         p.close();
 

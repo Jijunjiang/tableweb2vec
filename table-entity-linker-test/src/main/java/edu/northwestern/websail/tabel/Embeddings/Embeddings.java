@@ -61,7 +61,7 @@ public class Embeddings {
                 WikiCell cell = table.tableData[row][j];
                 for (WikiLink link : cell.surfaceLinks) {
                     if (link.target.id != -1) {
-                        String key = Integer.toString(link.target.id);
+                        String key = "e" + Integer.toString(link.target.id);
                         double[] v = embeddingVectorsMap_r.get(key);
                         if (v == null) continue;
                         rowSimilarity += calculateSimilarity_r(candidateID, key);
@@ -85,7 +85,7 @@ public class Embeddings {
                 WikiCell cell = table.tableData[i][col];
                 for (WikiLink link : cell.surfaceLinks) {
                     if (link.target.id != -1) {
-                        String key = Integer.toString(link.target.id);
+                        String key = "e" + Integer.toString(link.target.id);
                         double[] v = embeddingVectorsMap_c.get(key);
                         if (v == null) continue;
                         colSimilarity += calculateSimilarity_c(candidateID, key);
